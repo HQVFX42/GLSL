@@ -1,7 +1,7 @@
 # GLSL
 
 ## CPU Convolution Filtering
-* TexMapping.fs
+### TexMapping.fs
 ```cpp
 #version 450
 
@@ -23,7 +23,7 @@ void main()
 	FragColor = newColour;
 }
 ```
-* TexMapping.vs
+### TexMapping.vs
 ```cpp
 #version 450
 
@@ -39,7 +39,7 @@ void main()
 }
 
 ```
-* Method
+### Method
 ```cpp
 Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& kernel, int kernelSize)
 {
@@ -76,11 +76,11 @@ Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& ker
 }
 ```
 
-* Kernels
-	* Original texture
+### Kernels
+* Original texture
 ![스크린샷 2024-12-08 234732](https://github.com/user-attachments/assets/d8536238-61ad-4913-8f05-15239e31d28a)
 
-	* Sharpening
+* Sharpening
 ```cpp
 Image Renderer::Sharpen(const Image& src)
 {
@@ -94,8 +94,8 @@ Image Renderer::Sharpen(const Image& src)
 }
 ```
 ![스크린샷 2024-12-08 234708](https://github.com/user-attachments/assets/f0ea75de-07bd-409f-8c82-1a492edb6fa3)
-*
-	* Edge detection
+
+* Edge detection
 ```cpp
 Image Renderer::EdgeDetection(const Image& src)
 {
@@ -110,7 +110,7 @@ Image Renderer::EdgeDetection(const Image& src)
 ```
 ![스크린샷 2024-12-08 234516](https://github.com/user-attachments/assets/2dcfd9a2-c738-47e1-8412-34ac24c530fc)
 
-	* Blur
+* Blur
 ```cpp
 Image Renderer::Blur(const Image& src)
 {
@@ -122,7 +122,7 @@ Image Renderer::Blur(const Image& src)
 
 
 ## GPU Image Convolution Filtering
-* ComputeTest.comp
+### ComputeTest.comp
 ```cpp
 #version 450
 
@@ -152,7 +152,8 @@ void main() {
     imageStore(outputImage, pixelCoords, result);
 }
 ```
-* Method
+
+### Method
 ```cpp
 void Renderer::GPUConvolutionFilter()
 {
@@ -211,7 +212,7 @@ void Renderer::GPUConvolutionFilter()
 		img.width, img.height, 1);
 }
 ```
-* Kernels
+### Kernels
 ```cpp
 float kernel[9];
 	switch (2)
@@ -234,19 +235,19 @@ float kernel[9];
 		break;
 	}
 ```
-	* Sharpen
+* Sharpen
 ![스크린샷 2024-12-08 234259](https://github.com/user-attachments/assets/6cbaa5f9-6d74-4457-8dc3-fe41449142ad)
 
-	* Edge Detection
+* Edge Detection
 ![스크린샷 2024-12-08 234403](https://github.com/user-attachments/assets/9880a874-da23-430b-8c6e-821ab898c19c)
 
-	* Embossing
+* Embossing
 ![스크린샷 2024-12-08 234416](https://github.com/user-attachments/assets/fc06ad07-14d7-4e1c-bafd-4839eeecc8c6)
 
 
 
 ## Render Scene
-* Load shader code
+### Load shader code
 ```cpp
 bool Renderer::ReadFile(char* filename, std::string* target)
 {
@@ -265,7 +266,8 @@ bool Renderer::ReadFile(char* filename, std::string* target)
 	return true;
 }
 ```
-* Compile shaders
+
+### Compile shaders
 ```cpp
 void Renderer::AddShader(GLuint ShaderProgram, const char* pShaderText, GLenum ShaderType)
 {
@@ -361,7 +363,7 @@ GLuint Renderer::CompileShaders(char* filenameVS, char* filenameFS)
 }
 ```
 
-* Load Pngs: Load file and decode image.
+### Load Pngs: Load file and decode image.
 ```cpp
 m_TextureParameter2D = CreatePngTexture("./Textures/Banana.png");
 
@@ -389,7 +391,8 @@ GLuint Renderer::CreatePngTexture(char* filePath)
 	return temp;
 }
 ```
-* Main method
+
+### Main method
 ```cpp
 // Initialize Renderer
 g_Renderer = new Renderer(g_WindowSizeX, g_WindowSizeY);

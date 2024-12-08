@@ -1,8 +1,7 @@
 # GLSL
 
 ## Initalize
-```cpp
-## Render Scene
+
 ### Load shader code
 ```cpp
 bool Renderer::ReadFile(char* filename, std::string* target)

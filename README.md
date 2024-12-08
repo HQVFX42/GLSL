@@ -1,8 +1,8 @@
 # GLSL
 
 ## CPU Convolution Filtering
-* Shaders
-``` TexMaaping.fs
+* TexMapping.fs
+```cpp
 #version 450
 
 layout(location=0) out vec4 FragColor;
@@ -23,7 +23,8 @@ void main()
 	FragColor = newColour;
 }
 ```
-``` TexMaaping.vs
+* TexMapping.vs
+```cpp
 #version 450
 
 in vec4 a_Position;
@@ -39,7 +40,7 @@ void main()
 
 ```
 * Method
-```
+```cpp
 Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& kernel, int kernelSize)
 {
 	Image dst;
@@ -76,7 +77,7 @@ Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& ker
 ```
 
 * Kernels
-```
+```cpp
 Image Renderer::Sharpen(const Image& src)
 {
 	std::vector<float> kernel =
@@ -107,6 +108,35 @@ Image Renderer::Blur(const Image& src)
 ```
 
 ## GPU Image Convolution Filtering
-* Shaders
+* ComputeTest.comp
+```cpp
+#version 450
+
+layout (local_size_x = 16, local_size_y = 16) in;
+layout (rgba8, binding = 0) uniform image2D inputImage;
+layout (rgba8, binding = 1) uniform image2D outputImage;
+
+uniform float kernel[9]; // 3x3 convolution kernel
+
+void main() {
+    ivec2 pixelCoords = ivec2(gl_GlobalInvocationID.xy);
+    
+    vec4 result = vec4(0.0);
+    
+    for (int j = -1; j <= 1; ++j) {
+        for (int i = -1; i <= 1; ++i) {
+            ivec2 offset = ivec2(i, j);
+            vec4 pixel = imageLoad(inputImage, pixelCoords + offset);
+            result += pixel * kernel[(j+1)*3 + (i+1)];
+        }
+    }
+    
+    result.a = imageLoad(inputImage, pixelCoords).a;
+    
+    result = clamp(result, 0.0, 1.0);
+    
+    imageStore(outputImage, pixelCoords, result);
+}
+```
 * Method
 * Kernels

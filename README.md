@@ -78,7 +78,6 @@ Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& ker
 
 * Kernels
 	* Original texture
-
 ![스크린샷 2024-12-08 234732](https://github.com/user-attachments/assets/d8536238-61ad-4913-8f05-15239e31d28a)
 
 	* Sharpening
@@ -95,7 +94,7 @@ Image Renderer::Sharpen(const Image& src)
 }
 ```
 ![스크린샷 2024-12-08 234708](https://github.com/user-attachments/assets/f0ea75de-07bd-409f-8c82-1a492edb6fa3)
-
+*
 	* Edge detection
 ```cpp
 Image Renderer::EdgeDetection(const Image& src)

@@ -78,6 +78,7 @@ Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& ker
 
 * Kernels
 	* Original texture
+
 ![스크린샷 2024-12-08 234732](https://github.com/user-attachments/assets/d8536238-61ad-4913-8f05-15239e31d28a)
 
 	* Sharpening

@@ -67,7 +67,7 @@ void Renderer::CreateVertexBufferObjects()
 	float texRect[]
 		=
 	{
-			-size, -size, 0.f, 0,0,		//x, y, z, U,V
+		-size, -size, 0.f, 0,0,		//x, y, z, U,V
 		-size, size, 0.f, 0,1,
 		size, size, 0.f, 1,1,			//Triangle1
 		-size, -size, 0.f, 0,0,
@@ -942,7 +942,6 @@ void Renderer::DrawRectTex(GLuint Tex)
 	glDisableVertexAttribArray(aTex);
 }
 
-// 합성곱 필터 적용 함수
 Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& kernel, int kernelSize)
 {
 	Image dst;
@@ -1014,7 +1013,9 @@ void Renderer::ApplyFilterAndUpdateTexture()
 	img.data.resize(img.width * img.height * 4);
 	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, img.data.data());
 
-	Image filteredImg = EdgeDetection(img);
+	Image filteredImg = Sharpen(img);
+	//Image filteredImg = EdgeDetection(img);
+	//Image filteredImg = Blur(img);
 
 	GLuint newTexture;
 	glGenTextures(1, &newTexture);
@@ -1050,7 +1051,7 @@ void Renderer::GPUConvolutionFilter()
 	glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, img.width, img.height);
 
 	float kernel[9];
-	switch (0)
+	switch (2)
 	{
 	case 0: // Sharpen
 		kernel[0] = -1; kernel[1] = -1; kernel[2] = -1;

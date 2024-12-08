@@ -15,7 +15,8 @@ void RenderScene(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
-	g_Renderer->DrawRectTex(0);
+	//g_Renderer->DrawRectTex(0);
+	g_Renderer->Lecture07();
 
 	glutSwapBuffers();
 }
@@ -63,7 +64,7 @@ int main(int argc, char **argv)
 	g_Renderer = new Renderer(g_WindowSizeX, g_WindowSizeY);
 
 	//g_Renderer->ApplyFilterAndUpdateTexture();
-	g_Renderer->GPUConvolutionFilter();
+	//g_Renderer->GPUConvolutionFilter();
 
 	glutDisplayFunc(RenderScene);
 	glutIdleFunc(Idle);

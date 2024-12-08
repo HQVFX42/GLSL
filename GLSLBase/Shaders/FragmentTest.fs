@@ -36,19 +36,23 @@ void main()
 		}
 	}
 
-	//float distance = sqrt(newUV.x * newUV.x + newUV.y * newUV.y);
-	//float grey = sin(distance * PI * 2f * 5);
-
-	/*	//내부가 빈 원 그리기
-	if(newPos.x < 0.5f && newPos.x > 0.48f)
-	{
-		FragColor = vec4(1);
-	}
-	else
-	{
-		FragColor = vec4(0);
-	}
-	*/
-
 	FragColor = vec4(pointGrey);
+
+	/*
+	// 내부가 빈 원 그리기
+    vec2 newUV = v_Temp.xy - vec2(0.5, 0.5);  // -0.5 ~ 0.5 범위의 x, y 좌표
+    float distance = length(newUV);  // 중심으로부터의 거리
+
+    float outerRadius = 0.5f;  // 원의 외부 반지름
+    float innerRadius = 0.48f;  // 원의 내부 반지름
+
+    if (distance < outerRadius && distance > innerRadius)
+    {
+        FragColor = vec4(1.0, 1.0, 1.0, 1.0);  // 원의 테두리는 흰색
+    }
+    else
+    {
+        FragColor = vec4(0.0, 0.0, 0.0, 1.0);  // 그 외의 영역은 검은색
+    }
+	*/
 }

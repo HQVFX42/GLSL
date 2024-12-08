@@ -1,8 +1,44 @@
 # GLSL
 
 ## CPU Convolution Filtering
+* Shaders
+``` TexMaaping.fs
+#version 450
 
-* method
+layout(location=0) out vec4 FragColor;
+
+in vec2 v_Tex;
+
+uniform float u_Time;
+uniform sampler2D u_Texture;
+
+void main()
+{
+	vec2 newTex = abs(v_Tex - vec2(0.f, 1.0f)) + vec2(0.f, 1.0f);
+
+	vec4 newColour = vec4(newTex, 0, 1);
+
+	newColour = texture(u_Texture, newTex);
+
+	FragColor = newColour;
+}
+```
+``` TexMaaping.vs
+#version 450
+
+in vec4 a_Position;
+in vec2 a_Tex;
+
+out vec2 v_Tex;
+
+void main()
+{
+	gl_Position = vec4(a_Position.xyz, 1);
+	v_Tex = a_Tex;
+}
+
+```
+* Method
 ```
 Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& kernel, int kernelSize)
 {
@@ -69,3 +105,8 @@ Image Renderer::Blur(const Image& src)
 	return ApplyConvolution(src, kernel, 3);
 }
 ```
+
+## GPU Image Convolution Filtering
+* Shaders
+* Method
+* Kernels

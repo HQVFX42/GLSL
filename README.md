@@ -77,6 +77,10 @@ Image Renderer::ApplyConvolution(const Image& src, const std::vector<float>& ker
 ```
 
 * Kernels
+** Original texture
+![스크린샷 2024-12-08 234732](https://github.com/user-attachments/assets/d8536238-61ad-4913-8f05-15239e31d28a)
+
+** Sharpening
 ```cpp
 Image Renderer::Sharpen(const Image& src)
 {
@@ -88,7 +92,11 @@ Image Renderer::Sharpen(const Image& src)
 	};
 	return ApplyConvolution(src, kernel, 3);
 }
+```
+![스크린샷 2024-12-08 234708](https://github.com/user-attachments/assets/f0ea75de-07bd-409f-8c82-1a492edb6fa3)
 
+** Edge detection
+```cpp
 Image Renderer::EdgeDetection(const Image& src)
 {
 	std::vector<float> kernel =
@@ -99,13 +107,19 @@ Image Renderer::EdgeDetection(const Image& src)
 	};
 	return ApplyConvolution(src, kernel, 3);
 }
+```
+![스크린샷 2024-12-08 234516](https://github.com/user-attachments/assets/2dcfd9a2-c738-47e1-8412-34ac24c530fc)
 
+** Blur
+```cpp
 Image Renderer::Blur(const Image& src)
 {
 	std::vector<float> kernel(9, 1.0f / 9.0f);
 	return ApplyConvolution(src, kernel, 3);
 }
 ```
+![스크린샷 2024-12-08 234631](https://github.com/user-attachments/assets/c7317954-2832-4424-beb0-314a0bf44ec5)
+
 
 ## GPU Image Convolution Filtering
 * ComputeTest.comp

@@ -29,7 +29,8 @@ void Renderer::AddShader(GLuint ShaderProgram, const char* pShaderText, GLenum S
 	//쉐이더 오브젝트 생성
 	GLuint ShaderObj = glCreateShader(ShaderType);
 
-	if (ShaderObj == 0) {
+	if (ShaderObj == 0)
+	{
 		fprintf(stderr, "Error creating shader type %d\n", ShaderType);
 	}
 
@@ -46,7 +47,8 @@ void Renderer::AddShader(GLuint ShaderProgram, const char* pShaderText, GLenum S
 	GLint success;
 	// ShaderObj 가 성공적으로 컴파일 되었는지 확인
 	glGetShaderiv(ShaderObj, GL_COMPILE_STATUS, &success);
-	if (!success) {
+	if (!success)
+	{
 		GLchar InfoLog[1024];
 
 		//OpenGL 의 shader log 데이터를 가져옴
@@ -63,20 +65,23 @@ GLuint Renderer::CompileShaders(char* filenameVS, char* filenameFS)
 {
 	GLuint ShaderProgram = glCreateProgram(); //빈 쉐이더 프로그램 생성
 
-	if (ShaderProgram == 0) { //쉐이더 프로그램이 만들어졌는지 확인
+	if (ShaderProgram == 0)
+	{ //쉐이더 프로그램이 만들어졌는지 확인
 		fprintf(stderr, "Error creating shader program\n");
 	}
 
 	std::string vs, fs;
 
 	//shader.vs 가 vs 안으로 로딩됨
-	if (!ReadFile(filenameVS, &vs)) {
+	if (!ReadFile(filenameVS, &vs))
+	{
 		printf("Error compiling vertex shader\n");
 		return -1;
 	};
 
 	//shader.fs 가 fs 안으로 로딩됨
-	if (!ReadFile(filenameFS, &fs)) {
+	if (!ReadFile(filenameFS, &fs))
+	{
 		printf("Error compiling fragment shader\n");
 		return -1;
 	};
@@ -96,7 +101,8 @@ GLuint Renderer::CompileShaders(char* filenameVS, char* filenameFS)
 	//링크가 성공했는지 확인
 	glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &Success);
 
-	if (Success == 0) {
+	if (Success == 0)
+	{
 		// shader program 로그를 받아옴
 		glGetProgramInfoLog(ShaderProgram, sizeof(ErrorLog), NULL, ErrorLog);
 		std::cout << filenameVS << ", " << filenameFS << " Error linking shader program\n" << ErrorLog;
@@ -105,7 +111,8 @@ GLuint Renderer::CompileShaders(char* filenameVS, char* filenameFS)
 
 	glValidateProgram(ShaderProgram);
 	glGetProgramiv(ShaderProgram, GL_VALIDATE_STATUS, &Success);
-	if (!Success) {
+	if (!Success)
+	{
 		glGetProgramInfoLog(ShaderProgram, sizeof(ErrorLog), NULL, ErrorLog);
 		std::cout << filenameVS << ", " << filenameFS << " Error validating shader program\n" << ErrorLog;
 		return -1;

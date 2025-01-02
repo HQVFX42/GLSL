@@ -38,7 +38,7 @@
 		FragColor = vec4(0);	// 그 외의 영역은 검은색
 	}
 	```
-	![image.png](./Images/SimpleCircle.png){: width="128" height="128"}
+	![image.png](./Images/SimpleCircle.png){: width="128px" height="128px"}
 
 - MultipleCircles
 - ExpandingCircle

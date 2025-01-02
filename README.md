@@ -14,10 +14,10 @@
 <br>
 
 ## Graphics Pipeline
-1. <br> ![image.png](./Images/VertexShader.png)
-1. <br> ![image.png](./Images/PrimitiveAssembly.png)
-1. <br> ![image.png](./Images/Rasterization&Interpolation.png)
-1. <br> ![image.png](./Images/FragmentShader.png)
+1. <br> <img src="./Images/VertexShader.png" width="100%"/>
+1. <br> <img src="./Images/PrimitiveAssembly.png" width="100%"/>
+1. <br> <img src="./Images/Rasterization&Interpolation.png" width="100%"/>
+1. <br> <img src="./Images/FragmentShader.png" width="100%"/>
 
 ## Rectangle
 

@@ -1,9 +1,9 @@
-# GLSL
+# :telescope: GLSL
 - This repo is for practicing Shaders using OpenGL.
 
 <br>
 
-# Lists
+# :clipboard: Lists
 - [Graphics Pipeline](#Graphics-Pipeline)
 - [Rectangle](#Rectangle)
 - [Circle](#Circle)
@@ -11,7 +11,13 @@
 - [Particle](#Particle)
 - [Image Convolution Filtering](#Image-Convolution-Filtering)
 
+<br>
+
 ## Graphics Pipeline
+1. <br> ![image.png](./Images/VertexShader.png)
+1. <br> ![image.png](./Images/PrimitiveAssembly.png)
+1. <br> ![image.png](./Images/Rasterization&Interpolation.png)
+1. <br> ![image.png](./Images/FragmentShader.png)
 
 ## Rectangle
 

@@ -76,9 +76,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Source">
       <UniqueIdentifier>{a7fcb93d-3717-43ab-b316-e9d0ce5b8225}</UniqueIdentifier>
     </Filter>

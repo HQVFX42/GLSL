@@ -22,6 +22,27 @@
 ## Rectangle
 
 ## Circle
+- SimpleCircle (FragmentTest.fs)
+	```cpp
+	//내부가 빈 원 그리기
+	distance = sqrt(newUV.x * newUV.x + newUV.y * newUV.y);
+	float grey = sin(distance * PI * 2f * 5);
+	float outerRadius = 0.5f;
+	float innerRadius = 0.48f;
+	if (distance < outerRadius && distance > innerRadius)
+	{
+		FragColor = vec4(1);	// 원의 테두리는 흰색
+	}
+	else
+	{
+		FragColor = vec4(0);	// 그 외의 영역은 검은색
+	}
+	```
+	![image.png](./Images/SimpleCircle.png){: width="128" height="128"}
+
+- MultipleCircles
+- ExpandingCircle
+- HeartBeat Sensor (Call of Duty)
 
 ## Texutre Mapping
 

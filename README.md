@@ -49,9 +49,11 @@
 ## Particle
 
 ## Image Convolution Filtering
-
+- Reference
+	> [Convolution Neural Networks (합성곱 신경망), YJJo](https://yjjo.tistory.com/8).  
+	> [Image Convolution Filtering, Medium](https://medium.com/@timothy_terati/image-convolution-filtering-a54dce7c786b).  
+	> [GPU Computing: Image Convolution](https://cg.ivd.kit.edu/downloads/assignment3_GPUC.pdf).
 ### Initalize
-
 - Load shader code
 	```cpp
 	bool Renderer::ReadFile(char* filename, std::string* target)
